@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, TextField, Drawer, useTheme } from '@mui/material';
+import { Container, TextField, Drawer } from '@mui/material';
 
 import { Products } from 'components/products/pruducts';
 import { ProductItem } from 'components/products/product-item';
@@ -19,9 +19,6 @@ export const Main = ({ isOpenBasket, toggleBasket, changeOrderCount }) => {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
     const [orders, setOrders] = useState([]);
-
-    const theme = useTheme();
-    console.log(theme);
 
     const timer = useRef(null);
 
