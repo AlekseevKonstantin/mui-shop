@@ -9,8 +9,10 @@ export const Basket = ({ orders = [], onClose }) => {
             width: '400px'
         }}>
             <ListItem
-                flex
-                alignItems="center"
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center'
+                }}
             >
                 <Box 
                     sx={{

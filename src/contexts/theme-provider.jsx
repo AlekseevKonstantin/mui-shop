@@ -3,7 +3,6 @@ import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { deepmerge } from '@mui/utils';
 
 export const ColorModeServicesContext = createContext(undefined);
-export const ColorModeContext = createContext(undefined);
 
 export const ThemeProvider = ({ initialTheme = {}, initialMode = 'light', children }) => {
     const [mode, setMode] = useState(initialMode);
@@ -18,12 +17,10 @@ export const ThemeProvider = ({ initialTheme = {}, initialMode = 'light', childr
     }, []);
 
     return (
-        <ColorModeContext.Provider value={ mode }>
-            <ColorModeServicesContext.Provider value={ toggleColorMode }>
-                <MUIThemeProvider theme={ theme }>
-                    { children }
-                </MUIThemeProvider>
-            </ColorModeServicesContext.Provider>
-        </ColorModeContext.Provider>
+        <ColorModeServicesContext.Provider value={ toggleColorMode }>
+            <MUIThemeProvider theme={ theme }>
+                { children }
+            </MUIThemeProvider>
+        </ColorModeServicesContext.Provider>
     )
 }
