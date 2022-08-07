@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ThemeProvider } from './contexts/theme-provider';
+
+import { NavbarPanel } from './components/navbar';
+import { Main } from './components/main';
+import { Box } from '@mui/material';
+
+const makeAppStyles = (theme) => { 
+  const { mode, background, grey } = theme.palette;
+  
+  return {
+    background: mode === 'light' ? background.paper : grey[800],  
+}};
 
 function App() {
+
+  const [isOpenBasket, setIsOpenBasket] = useState(false);
+  const [orderCount, setOrderCount] = useState(0)
+
+  const toggleBasket = () => {
+    setIsOpenBasket((prevValue) => !prevValue);
+  }
+
+  const handleChangeOrderCount = (count) => {
+    setOrderCount(count)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Box sx={makeAppStyles}
+      >
+        <NavbarPanel 
+          toggleBasket={ toggleBasket }
+          productCount={ orderCount }
+        />
+        
+        <Main 
+          isOpenBasket={ isOpenBasket } 
+          toggleBasket={ toggleBasket }
+          changeOrderCount={ handleChangeOrderCount }
+        />
+      </Box>
+    </ThemeProvider>
   );
 }
 
