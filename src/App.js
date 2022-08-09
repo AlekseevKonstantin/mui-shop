@@ -3,7 +3,7 @@ import { ThemeProvider } from './contexts/theme-provider';
 
 import { NavbarPanel } from './components/navbar';
 import { Main } from './components/main';
-import { Box } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
 
 const makeAppStyles = (theme) => { 
   const { mode, background, grey } = theme.palette;
@@ -27,19 +27,20 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Box sx={makeAppStyles}
-      >
-        <NavbarPanel 
-          toggleBasket={ toggleBasket }
-          productCount={ orderCount }
-        />
-        
-        <Main 
-          isOpenBasket={ isOpenBasket } 
-          toggleBasket={ toggleBasket }
-          changeOrderCount={ handleChangeOrderCount }
-        />
-      </Box>
+        <CssBaseline />
+        <Box sx={makeAppStyles}
+        >
+            <NavbarPanel 
+                toggleBasket={ toggleBasket }
+                productCount={ orderCount }
+            />
+            
+            <Main 
+                isOpenBasket={ isOpenBasket } 
+                toggleBasket={ toggleBasket }
+                changeOrderCount={ handleChangeOrderCount }
+            />
+        </Box>
     </ThemeProvider>
   );
 }

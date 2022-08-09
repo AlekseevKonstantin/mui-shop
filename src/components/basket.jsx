@@ -77,9 +77,6 @@ export const Basket = ({ orders = [], onClose }) => {
                             <Typography 
                                 variant="body2" 
                                 component="div"
-                                sx={{
-
-                                }}
                             >
                                 { parseFloat(price) * parseInt(count) }
                             </Typography>

@@ -7,9 +7,7 @@ export const Products = ({ products = [], children }) => {
         <Grid 
             container 
             spacing={ 2 } 
-            sx={{
-                padding: '32px 0'
-            }}
+            sx={{ padding: '32px 0' }}
         >
             {
                 products.map((item) => (
